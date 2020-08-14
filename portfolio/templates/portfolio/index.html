@@ -1,0 +1,296 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashish Jaiswar</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/preloader.css'%}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="https://kit.fontawesome.com/1032187501.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header"  >
+        <nav class="navigation">
+            <div class="navigation__logo">
+                <a href="#index" class="navigation__logo-link">{AJ}</a>
+            </div>
+            <div class="navigation__link-box" id="index">
+
+                <input type="checkbox" class="toggle__btn" id="toggle">
+                <label for="toggle" class="toggle__label"><i class="fas fa-bars"></i></label>
+                <ul class="navigation__items">
+                    <li class="navigation__item">
+                        <a href="#home" class="navigation__item-link current home-sect">Home</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="#about" class="navigation__item-link about-sect">About us</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="#service" class="navigation__item-link service-sect">Services</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="#work" class="navigation__item-link project-sect">Projects</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="{%static 'resume/resume.pdf'%}" class="navigation__item-link">Resume</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="#contact" class="navigation__item-link contact-sect">Contact</a>
+                    </li>
+                </ul>
+                
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="section-home" id="home">
+            <div class="home__title-box">
+                <h2 class="heading-primary">
+                    Hi, I’m <span>Ashish Jaiswar</span> ,<br/>
+                    I’m a Fullstack Web Developer, lives in Downtown Mumbai, 
+                    India
+                </h2>
+                <a href="#contact" class="btn hire-btn">Hire me</a> 
+            </div>
+            <div class="home__image-box">
+                <img src="{% static 'images/illustratuin.jpg' %}" alt="Ashish Photo" class="home__image">
+            </div>
+        </section>
+
+        <section class="section-about" id="about">
+            <div class="aboutme__title">
+                <h3 class="heading-secondary about__title">About Me</h3>
+            </div>
+            <div class="aboutme__desc">
+                <p class="paragraph">My name is Ashish Jaiswar. 
+                    I'm a 21 year old FullStack Developer from Mumbai, India️. 
+                    I describe myself as a passionate developer who loves coding, 
+                    designing, and building great Websites ️.  
+                    <br/>
+                    For the past 3 years, I've been developing applications for the 
+                    web using mostly Python using Django framework. I do this for a 
+                    living and love what I do as every day there is something new and 
+                    exciting to learn. 
+                </p>
+                <div class="aboutme__buttons">
+                    <a href="#work" class="btn project-btn">My Projects</a>
+                    <a href="{%static 'resume/resume.pdf'%}" class="btn resume-btn">Resume</a>
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="section-services" id="service">
+            <div class="services__heading">
+                <h2 class="heading-secondary">Services</h2>
+            </div>
+            <div class="services__box">
+                <div class="service yellow">
+                    <img src="{% static 'images/ui.svg' %}" alt="ui research" class="service__icon">
+                    <p class="service__heading">Ecommerce</p>
+                    <p class="service__details">Feature-filled, customisable Ecommerce store,
+                        with integration of payment gateway, customer products and many more.
+                    </p>
+                </div>
+                <div class="service red">
+                    <img src="{% static 'images/webdesign.svg'%}" alt="Web Design" class="service__icon">
+                    <p class="service__heading">Web Design</p>
+                    <p class="service__details">Clean, modern designs - optimized for performance, 
+                        search engines, and converting users to customers.</p>
+                    
+                </div>
+                <div class="service blue">
+                    <img src="{% static 'images/code.svg'%}" alt="web development" class="service__icon">
+                    <p class="service__heading">Web Development</p>
+                    <p class="service__details">Creative, Responsive websites - Converting graphical designs 
+                        to code that attracts customers and boosts your business.</p>
+
+                    </p>
+                </div>
+                <div class="service green">
+                    <img src="{% static 'images/backend.svg' %}" alt="Web backend" class="service__icon">
+                    <p class="service__heading">Backend Services</p>
+                    <p class="service__details">Get a powerfull, secure backend for your web application with user authentication and admin access.</p>
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="section-projects" id="work">
+            <div class="projects__heading">
+                <h2 class="heading-secondary">Projects</h2>
+            </div>
+            <div class="filter">
+                <!-- <ul class="tabs">
+                    <li class="tabs__item"><a href="" class="tabs__item-link current">All</a></li>
+                    <li class="tabs__item"><a href="" class="tabs__item-link">Static Websites</a></li>
+                    <li class="tabs__item"><a href="" class="tabs__item-link">Web Projects</a></li>
+                </ul> -->
+            </div>
+            <div class="projects__container">
+               <div class="projects">
+                   <!-- ***********Project*************  -->
+                   {% for project in projects%}
+                   <div class="project">
+                       <div class="project__imagebox">
+                           <img src="{{ project.image.url }}" alt="" class="project__imagebox-image">
+                           <div class="project__linkbox">
+                                   <a href="{{ project.url }}" target="_blank" class="project__linkbox-link">Visit</a>
+                           </div>
+                       </div>
+                       <div class="project__info">
+                           <h3 class="project__info-title">{{ project.title }}</h3>
+                           <p class="project__info-desc">{{ project.description }}</p>
+                       </div>
+                    </div>
+                    {% endfor%}
+               </div>
+                
+            </div>
+                
+                
+                <div class="load-more">
+                    <button class="btn load-more-btn">More</button>
+                </div>
+            </div>
+        </section>
+        <section class="section-banner" >
+            <div class="banner" id="b">
+                <h2 class="heading-hire">Have any projects in mind?</h2>
+                <a href="#contact" class="btn btn-hire">Hire me</a>
+            </div>
+        </section>
+
+        <section class="section-contact" id="contact">
+            <div class="contact__heading">
+                <h2 class="heading-secondary">Contact me</h2>
+            </div>
+
+            <div class="contactinfo">
+
+                <!-- Social links  -->
+                <div class="contactinfo__box">
+                    <h3 class="heading-tertiary">Contact info</h3>
+                    <div class="contactinfo__box-github">
+                        <img src="{% static 'images/github.svg' %}" alt="github" class="github__img">   
+                        <a href="https://github.com/AshishJaiswar" class="github__link">github.com/AshishJaiswar</a> 
+                    </div>
+                    <div class="contactinfo__box-email">
+                        <img src="{% static 'images/email.svg' %}" alt="github" class="email__img">   
+                        <a href="mailto: ashishjaiswar8655@gmail.com" class="email__link">ashishjaiswar8655@gmail.com</a> 
+                    </div>
+                </div>
+
+                <!-- Contact form   -->
+                <form action="{% url 'send_email' %}" class="contactinfo__form" method='POST'>
+                {% csrf_token %}
+                    <div>
+                        <div class="form__control">
+                            <div class="form__field">
+                                <label for="name" class="input-label">Name</label><br/>
+                                <input type="text" placeholder="Type your name..." class="name__input" id="name" name="name" >
+                            </div>
+                            <div class="form__field">
+                                <label for="email" class="input-label">Email</label><br/>
+                                <input type="text" placeholder="Type your email..." class="email__input" id="email" name="email">
+                            </div>
+                        </div>
+                        <!-- Message  box   -->
+
+                        <div class="form__field">
+                            <label for="textarea" class="input-label">Subject</label><br/>
+                            <input type="text" name="subject" placeholder="Type your subject..." class="message__input">
+                        </div>
+                        <div class="form__field">
+                            <label for="textarea" class="input-label">Message</label><br/>
+                            <textarea name="message" id="" cols="30" rows="10" placeholder="Type your name..." class="message__input" ></textarea>
+                        </div>
+                    </div>
+                    <!-- Send button   -->
+                    <div class="send__button">
+                        <button class="btn send-btn">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__links">
+                <ul class="footer__items">
+                    <li class="footer__item">
+                        <a href="#home" class="footer__item-link ">Home</a>
+                    </li>
+                    <li class="footer__item">
+                        <a href="#about" class="footer__item-link ">About us</a>
+                    </li>
+                    <li class="footer__item">
+                        <a href="#service" class="footer__item-link ">Services</a>
+                    </li>
+                    <li class="footer__item">
+                        <a href="#work" class="footer__item-link ">Projects</a>
+                    </li>
+                    <li class="footer__item">
+                        <a href="{%static 'resume/resume.pdf'%}" class="footer__item-link ">Resume</a>
+                    </li>
+                    <li class="footer__item">
+                        <a href="#contact" class="footer__item-link ">Contact</a>
+                    </li>
+                    
+                </ul>
+            </div>
+    
+            <!-- Social links  -->
+            <div class="social">
+                <div class="social__logo">
+                    <a href="#index" class="navigation__logo-link">{AJ}</a> 
+                </div>
+                <h4 class="social__title">Follow me</h4>
+                <div class="social__links">
+                    <div class="social__image-box">
+                       <a href="https://www.facebook.com/ashish.jaiswar.106"  class="social__link"><i class="fab fa-facebook-f"></i></a> 
+                    </div>
+                    
+                    <div class="social__image-box">
+                       <a href="https://twitter.com/AshishJ07535250?s=09"  class="social__link"><i class="fab fa-twitter"></i></a> 
+                    </div>
+                    
+                    <div class="social__image-box">
+                        <a href="https://www.instagram.com/uiuxillusion/"  class="social__link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                   
+                </div>
+            </div>
+    
+            <!-- Credits -->
+            <div class="credits">
+                <a href="https://github.com/AshishJaiswar" class="credits__link">github.com/AshishJaiswar</a> 
+                <a href="mailto: ashishjaiswar8655@gmail.com" class="credits__link">ashishjaiswar8655@gmail.com</a> 
+            
+
+                <p class="designedby">Designed by ~ Ashish Jaiswar</p>
+            </div>
+        </div>
+        <div class="copyright-box">
+            <p class="copyright">copyright &copy; 2020</p>
+        </div>
+    </footer>
+
+    <div class="setting">
+        <div class="setting__imagebox"><img src="{% static 'images/setting.svg' %}" alt="" class="setting__image"></div>
+        <div class="colorbox color-yellow" id="yellow"></div>
+        <div class="colorbox color-red" id="red"></div>
+        <div class="colorbox color-green" id="green"></div>
+        <div class="colorbox color-blue" id="blue"></div>
+    </div>
+
+</body>
+<script src="{% static 'javascript/index.js' %}"></script>
+<script src="{% static 'javascript/preloader.js' %}"></script>
+<script src="{% static 'javascript/setting.js' %}"></script>
+
+</html>
